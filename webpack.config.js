@@ -22,6 +22,13 @@ module.exports = env => ({
                 test: /\.(ts|tsx)$/,
                 use: "ts-loader",
                 exclude: /node_modules/
+            },
+            {
+                // @ref: https://github.com/angular/universal-starter/pull/593/files
+                // Mark files inside `@angular/core` as using SystemJS style dynamic imports.
+                // Removing this will cause deprecation warnings to appear.
+                test: /[\/\\]@angular[\/\\]core[\/\\].+\.js$/,
+                parser: { system: true }
             }
         ]
     },
