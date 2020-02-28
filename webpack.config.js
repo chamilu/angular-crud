@@ -16,6 +16,24 @@ module.exports = env => ({
             inject: true
         })
     ],
+    module: {
+        rules: [
+            {
+                test: /\.(ts|tsx)$/,
+                use: "ts-loader",
+                exclude: /node_modules/
+            }
+        ]
+    },
+    resolve: {
+        extensions: [".tsx", ".ts", ".js"]
+    },
+    optimization: {
+        runtimeChunk: true,
+        splitChunks: {
+            chunks: "all"
+        }
+    },
     devServer: {
         host: "localhost",
         open: true,
